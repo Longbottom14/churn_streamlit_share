@@ -6,11 +6,12 @@ import streamlit as st
 import warnings 
 warnings.filterwarnings('ignore')
 
-@st.cache(allow_output_mutation = True)
+#@st.cache(allow_output_mutation = True)
 def load_model():
     loaded_models ={} # load models
     with open('churn-models.bin', 'rb') as f_in:
         loaded_models['xgb'],loaded_models['Lgb'],loaded_models['Logistic_reg'],loaded_models['bayes'] = pickle.load(f_in)
+        return loaded_models
 loaded_models = load_model()
 
 def preprocessing_single(single_dict):
